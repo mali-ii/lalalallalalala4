@@ -71,6 +71,6 @@ def cart_total(items):
     return sum(float(item.get("price", 0)) * int(item.get("quantity", 1)) for item in items)
 
 
-def total_sum(products: Iterable[dict[str, Any]]) -> float:
-    """Итоговая стоимость товаров с учётом количества в каждой позиции."""
-    return sum(float(p.get("price", 0)) * int(p.get("quantity", 1)) for p in products)
+def total_sum(products):
+    """Итоговая стоимость единиц товара (будет уточнена при разрешении конфликта)."""
+    return sum(float(p.get("price", 0)) for p in products)
