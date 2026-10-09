@@ -73,4 +73,8 @@ def cart_total(items):
 
 def total_sum(products):
     """Итоговая стоимость единиц товара (будет уточнена при разрешении конфликта)."""
+<<<<<<< HEAD
     return sum(float(p["price"]) for p in products)
+=======
+    return sum(float(p.get("price", 0)) * int(p.get("quantity", 1)) for p in products)
+>>>>>>> feature/total-v2
