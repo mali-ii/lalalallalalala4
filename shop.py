@@ -66,7 +66,7 @@ def save_orders(orders: Any, filename: str | Path = "orders.json") -> None:
 
 def cart_total(items):
     """Сумма позиций корзины (исходная версия для упражнения hotfix)."""
-    return sum(float(item.get("price", 0)) for item in items)
+    return sum(float(item.get("price", 0)) * int(item.get("quantity", 1)) for item in items)
 
 
 def total_sum(products):
