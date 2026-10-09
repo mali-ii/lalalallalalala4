@@ -18,6 +18,8 @@ def _total_stock(product: dict[str, Any]) -> int:
 
 def get_low_stock(products: Iterable[dict[str, Any]], limit: int = 3) -> list[dict[str, Any]]:
     """Выбирает товары с суммарным остатком не выше limit, по возрастанию."""
+    if limit < 0:
+        raise ValueError("limit должен быть неотрицательным")
     matches = [product for product in products if _total_stock(product) <= limit]
     return sorted(matches, key=lambda product: (_total_stock(product), str(product.get("name", "")).casefold()))
 
